@@ -1,0 +1,61 @@
+Student: Puisor Oana-Daniela
+  Grupa: 311 CD
+
+	   Structuri de date
+		 Tema 1
+
+
+Pentru a rezolva tema, am tratat pe rand fiecare test, incepand de la easy 0, am vazut ce functii 
+erau folosite si le-am implementat secvential.
+
+	In functia deschide_ghisee am alocat memorie pentru vectorul de liste 
+ghisee. Am salvat adresa obtinuta dupa alocarea memoriei ca si valoare a adresei pe care 
+am primit-o ca si argument.Am avut ceva probleme la implementarea initiala a functiei, 
+pentru ca nu salvam adresa obtinuta dupa alocare decat local si acea valoare nu mai 
+era vazuta in functia parinte.
+	Pentru cazul mai complicat,adica pentru redistribuirea persoanelor
+am creat o noua functie,memoreaza_persoane,in care doar am sortat 
+prioritatile persoanelor descrescator,ca mai apoi in functia deschide_ghisee
+sa le redistribui uniform la fiecare ghiseu,in cazul in care se mai deschideau,
+folosindu-ma si de functiile adauga_persoana si calculeaza_numar_total_oameni.
+
+	In functia adauga_persoana,am luat problema pe toate cazurile de 
+pozitionare.Mai intai daca nu se geseste nimeni la ghiseul cu numarul 
+"numar_ghiseu",atunci adaug respectiva persoana,iar ea va pointa spre 
+NULL(si spre urmator si spre anterior).
+	In cazul contrar,daca prioritatea persoanei este mai mica decat 
+cea a toturor care stau la coada,atunci o voi pune la capatul listei,iar
+ ghiseu->ultimul va pointa acum spre ea.Daca prioritatea pesoanei este 
+cea mai mare atunci o voi pune in capul listei,iar ghiseu->primul va pointa
+ spre ea.Daca este intre persoane,atunci o voi adauga unde trebuie si ii voi
+ modifica referintele.De asemenea am tinut cont si de numele persoanelor 
+care trebuie sa fie alfabetic asezate,daca au prioritatile egale.
+
+	In functia sterge_persoana,am procedat asemanator cu cea de 
+la adauga_persoana,pentru ca si aici a trebuit sa tin cont de pozitie,
+ca sa pot modifica referintele si sa pot elimina pesoana cu numele si
+ prioritatea date.Daca nu tineam cont de referinte,atunci distrugeam 
+lista si nu imi treceau testele.
+
+	In functia sterge_primii_oameni,am modificat spre cine sa pointeze
+ ghiseu-primul,adica spre urmatoarea persona de la coada.Acum a doua persoana
+ va avea anterior NULL pentru ca am facut free la prima persoana.
+
+	In functia calculeaza_numar_total_oameni,ma-am folosit de functia 
+calculeaza_numar_oameni_ghiseu,sa pot sa retin numarul de oameni de la fiecare
+ghiseu si sa pot sa il adaug la suma totala.Am tinut cont de ceea ce s-a 
+discutat pe forum si am folosit variabila globala total_ghisee sa retin 
+numarul de ghisee deschise.
+
+	Functia calculeaza_numar_oameni_ghiseu este identica cu functia 
+length implementata la laborator.
+
+	In functia gaseste_pozitie_persoana voi incrementa count la fiecare 
+iteratie,ca sa ii pot gasi pozitia persoanei date.
+
+	Functia gaseste_persoana_din_fata este asemanatoare cu ca precedenta, 
+doar ca nu mai am nevoie de count,returez pesoana anterioara celei date.
+
+	Ultima functie ,afiseaza_rand_ghiseu,va afisia in fisier asa cum se
+ specifica in cerinta,pesoanele de la ghisee,de asemena cu condiatia ca 
+numarul_ghiseu sa fie mai mic ca total_ghisee,ca sa treaca si ultimul test.
